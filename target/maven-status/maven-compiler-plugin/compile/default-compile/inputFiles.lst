@@ -1,0 +1,8 @@
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/resource/FestivalResource.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/repository/FestivalRepository.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/dto/FestivalDto.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/repository/tables/FestivalByIdTable.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/repository/cassandra/CassandraConfig.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/Main.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/repository/tables/keys/FestivalShowKey.java
+/Users/Scott/dev/github/stagegage-services/src/main/java/com/stagegage/services/service/FestivalService.java
