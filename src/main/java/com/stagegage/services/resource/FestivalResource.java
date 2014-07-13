@@ -56,7 +56,7 @@ public class FestivalResource {
         return new FestivalResponse(festivalService.getFestivalShows(festivalName));
     }
 
-    @RequestMapping(value = "/{festivalName}/shows", method = RequestMethod.GET)
+    @RequestMapping(value = "/{festivalName}/shows", method = RequestMethod.PUT)
     public FestivalResponse addFestivalShow(@PathVariable String festivalName,
                                                 @RequestParam String artistName,
                                                 @RequestParam String startTime,

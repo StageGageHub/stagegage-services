@@ -29,11 +29,19 @@ public class FestivalResponse {
     }
 
     public FestivalResponse(FestivalDto dto) {
-        this.id = dto.getId();
-        this.name = dto.getName();
-        this.startDate = dto.getStartDate().toString();
-        this.endDate = dto.getEndDate().toString();
-        this.shows = ShowResponse.getResponses(dto.getShows());
+        if(dto != null) {
+            this.id = dto.getId();
+            this.name = dto.getName();
+            this.startDate = dto.getStartDate().toString();
+            this.endDate = dto.getEndDate().toString();
+            this.shows = ShowResponse.getResponses(dto.getShows());
+        } else {
+            this.id = null;
+            this.name = null;
+            this.startDate = null;
+            this.endDate = null;
+            this.shows = null;
+        }
     }
 
     public static List<FestivalResponse> getResponses(List<FestivalDto> festivalDtos) {

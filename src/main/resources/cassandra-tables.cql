@@ -16,8 +16,8 @@ CREATE TABLE festival_shows (
     festival_name text,
     show_id UUID,
     artist_name text,
-    show_start_time TIMESTAMP,
-    show_end_time TIMESTAMP,
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
     PRIMARY KEY ((festival_name), show_id)
 );
 

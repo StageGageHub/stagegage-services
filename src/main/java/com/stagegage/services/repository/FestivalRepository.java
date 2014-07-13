@@ -4,6 +4,7 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.exceptions.DriverException;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.stagegage.services.dto.FestivalDto;
+import com.stagegage.services.dto.response.ShowDto;
 import com.stagegage.services.repository.tables.FestivalByNameRow;
 import com.stagegage.services.repository.tables.FestivalShowByNameIdRow;
 import org.joda.time.DateTime;
@@ -84,8 +85,11 @@ public class FestivalRepository {
     }
 
     public FestivalDto getFestivalShows(String festivalName) {
-        String select = QueryBuilder.select("id", "name", "start_date", "end_date").from("festivals_by_name").toString();
-        List<FestivalShowByNameIdRow> festivalRows = template.query(select, new RowMapper<FestivalShowByNameIdRow>() {
+        // get fetival
+        FestivalDto festvalDto = getFestivalByName(festivalName);
+        // get shows
+        String select = QueryBuilder.select("festival_name", "show_id", "artist_name", "start_time", "end_time").from("festival_shows").toString();
+        List<FestivalShowByNameIdRow> showRows = template.query(select, new RowMapper<FestivalShowByNameIdRow>() {
 
             @Override
             public FestivalShowByNameIdRow mapRow(Row row, int i) throws DriverException {
@@ -93,12 +97,27 @@ public class FestivalRepository {
                         row.getString("festival_name"),
                         row.getUUID("show_id"),
                         row.getString("artist_name"),
-                        new DateTime(row.getDate("start_date")),
-                        new DateTime(row.getDate("end_date"))
+                        new DateTime(row.getDate("start_time")),
+                        new DateTime(row.getDate("end_time"))
                 );
             }
         });
 
-        return FestivalShowByNameIdRow.toDto(festivalRows).get(0);
+        // Add shows and return
+        return FestivalShowByNameIdRow.toDto(festvalDto, showRows);
+    }
+
+    public FestivalDto addShowToFestival(String festivalName, ShowDto showDto) {
+        String insert = QueryBuilder.insertInto(env.getProperty("cassandra.keyspace"), "festival_shows")
+                                    .value("festival_name", festivalName)
+                                    .value("show_id", showDto.getShowId())
+                                    .value("artist_name", showDto.getArtistName())
+                                    .value("start_time", showDto.getStartTime().toString())
+                                    .value("end_time", showDto.getEndTime().toString())
+                                    .toString();
+        template.execute(insert);
+
+
+        return getFestivalShows(festivalName);
     }
 }

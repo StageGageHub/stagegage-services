@@ -5,6 +5,7 @@ com/stagegage/services/repository/ArtistRepository$2.class
 com/stagegage/services/dto/GenreDto.class
 com/stagegage/services/repository/cassandra/CassandraConfig.class
 com/stagegage/services/exception/InvalidFestivalDtoException.class
+com/stagegage/services/repository/FestivalRepository$3.class
 com/stagegage/services/repository/tables/ArtistByIdRow.class
 com/stagegage/services/repository/ArtistRepository.class
 com/stagegage/services/repository/FestivalRepository$1.class
@@ -17,12 +18,13 @@ com/stagegage/services/repository/FestivalRepository.class
 com/stagegage/services/dto/response/GenreResponse.class
 com/stagegage/services/repository/GenreRepository$1.class
 com/stagegage/services/resource/ArtistResource.class
+com/stagegage/services/dto/response/ShowDto.class
 com/stagegage/services/dto/ArtistDto.class
 com/stagegage/services/service/ArtistService.class
 com/stagegage/services/resource/FestivalResource.class
 com/stagegage/services/repository/tables/keys/FestivalShowKey.class
+com/stagegage/services/repository/tables/FestivalShowByNameIdRow.class
 com/stagegage/services/service/FestivalService.class
-com/stagegage/services/dto/FestivalDto$ShowDto.class
 com/stagegage/services/repository/ArtistRepository$1.class
 com/stagegage/services/dto/response/ArtistResponse.class
 com/stagegage/services/dto/response/ShowResponse.class

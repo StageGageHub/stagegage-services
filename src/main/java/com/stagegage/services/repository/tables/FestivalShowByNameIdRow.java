@@ -48,21 +48,19 @@ public class FestivalShowByNameIdRow {
         this.endDate = dto.getEndTime();
     }
 
-    public static FestivalDto toDto(List<FestivalShowByNameIdRow> festivalRows) {
-        if (festivalRows == null) return null;
+    public static FestivalDto toDto(FestivalDto festival, List<FestivalShowByNameIdRow> showRows) {
+        if (showRows == null) return null;
 
         List<ShowDto> shows = new ArrayList<ShowDto>();
-        for (FestivalShowByNameIdRow row : festivalRows) {
+        for (FestivalShowByNameIdRow row : showRows) {
             shows.add(toDto(row));
         }
 
-        FestivalShowByNameIdRow rowTemplate = festivalRows.get(0);
-
-        return new FestivalDto(null,
-                    rowTemplate.primaryKey.getFestivalName(),
-                    rowTemplate.getStartDate(),
-                    rowTemplate.getEndDate(),
-                    shows);
+        return new FestivalDto(festival.getId(),
+                                festival.getName(),
+                                festival.getStartDate(),
+                                festival.getEndDate(),
+                                shows);
 
     }
 

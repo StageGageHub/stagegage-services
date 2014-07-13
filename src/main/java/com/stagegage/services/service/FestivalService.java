@@ -45,6 +45,8 @@ public class FestivalService {
     }
 
     public FestivalDto addFestivalShow(String festivalName, ShowDto showDto) {
-        return null;
+
+        return festivalRepository.addShowToFestival(festivalName, showDto);
+
     }
 }
